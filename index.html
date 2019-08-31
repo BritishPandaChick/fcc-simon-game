@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>FreeCodeCamp Simon Game</title>
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+
+    <!-- Audio sounds -->
+    <audio id="soundClip1">
+      <source src="http://musicweb.ucsd.edu/~terbe/172/uke3.wav"></source>
+    </audio>
+    <audio id="soundClip2">
+      <source src="http://www.takuichi.net/hobby/edu/sonic_wave/sound_analysis/sound_instruments/Harpsichord.wav"></source>
+    </audio>
+    <audio id="soundClip3">
+      <source src="http://okumedia.cc.osaka-kyoiku.ac.jp/~masako/exp/kichu/urawaza/G5.wav"></source>
+    </audio>
+    <audio id="soundClip4">
+      <source src="http://research.spa.aalto.fi/publications/papers/jaes-ssm/dsbe40a.wav"></source>
+    </audio>
+
+  </head>
+  <body>
+    <header>
+      <h1>Free Code Camp Simon Game</h1>
+    </header>
+
+    <main>
+      <div id="circle-body">
+        <div id="topLeftCircle"></div>
+        <div id="topRightCircle"></div>
+        <div id="bottomLeftCircle"></div>
+        <div id="bottomRightCircle"></div>
+        <div id="middle-circle">
+          <div id="game-title" class="font-effect-emboss">Simon!</div>
+          <div id="switch-buttons">
+            <input type="checkbox" class="toggle" id="on">
+            <button class="button" id="start">Start</button>
+            <input type="checkbox" class="toggle" id="strict">
+          </div>
+          <div class="button-text">
+            <span>Power</span><span>Strict</span>
+            <span id="turn-window"></span>
+            <span class="count">Count</span>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2019 Sarah Bartley. All Rights Reserved.</p>
+    </footer>
+
+    <script type="text/javascript" src="assets/js/script.js"></script>
+  </body>
+</html>
