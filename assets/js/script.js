@@ -1,5 +1,5 @@
 //https://www.youtube.com/watch?v=n_ec3eowFLQ
-//Stop at 34:57
+//Stop at 54:35
 
 //Global variables
 let order = [];
@@ -74,5 +74,142 @@ play = () => {
 
 //Sets game turn
 gameTurn = () => {
-  on = false;
+  on = false; //keeps player from pushing buttons
+
+  if(flash == turn){
+    clearInterval(intervalId);
+    compTurn = false;
+    clearColor();
+    on = true;
+  }
+
+  if (compTurn){
+    clearColor();
+    setTimeout(() => {
+      if (order[flash] == 1) one();
+      if (order[flash] == 2) two();
+      if (order[flash] == 3) three();
+      if (order[flash] == 4) four();
+      flash++;
+    }, 200);
+  }
+}
+
+// Green button
+one = () => {
+  if(noise){
+    let audio = document.getElementById("soundClip1");
+    audio.play();
+  }
+  noise = true;
+  topLeft.style.backgroundColor = "lightgreen";
+}
+
+// Red button
+two = () => {
+  if(noise){
+    let audio = document.getElementById("soundClip2");
+    audio.play();
+  }
+  noise = true;
+  topRight.style.backgroundColor = "tomato";
+}
+
+// Yellow button
+three = () => {
+  if(noise){
+    let audio = document.getElementById("soundClip3");
+    audio.play();
+  }
+  noise = true;
+  bottomLeft.style.backgroundColor = "yellow";
+}
+
+// Blue button
+four = () => {
+  if(noise){
+    let audio = document.getElementById("soundClip4");
+    audio.play();
+  }
+  noise = true;
+  bottomRight.style.backgroundColor = "lightskyblue";
+}
+
+//Clears colors
+clearColor = () => {
+  topLeft.style.backgroundColor = "darkgreen";
+  topRight.style.backgroundColor = "darkred";
+  bottomLeft.style.backgroundColor = "goldenrod";
+  bottomRight.style.backgroundColor = "darkblue";
+}
+
+//addEventListeners for color buttons
+topLeft.addEventListener("click", (event)  => {
+  if(on){
+    playerOrder.push(1);
+    check();
+    one();
+    if(!win){
+      setTimeout(() => {
+        clearColor();
+      }, 300);
+    }
+  }
+});
+
+topRight.addEventListener("click", (event)  => {
+  if(on){
+    playerOrder.push(2);
+    check();
+    two();
+    if(!win){
+      setTimeout(() => {
+        clearColor();
+      }, 300);
+    }
+  }
+});
+
+bottomLeft.addEventListener("click", (event)  => {
+  if(on){
+    playerOrder.push(3);
+    check();
+    three();
+    if(!win){
+      setTimeout(() => {
+        clearColor();
+      }, 300);
+    }
+  }
+});
+
+bottomRight.addEventListener("click", (event)  => {
+  if(on){
+    playerOrder.push(4);
+    check();
+    four();
+    if(!win){
+      setTimeout(() => {
+        clearColor();
+      }, 300);
+    }
+  }
+});
+
+//Check function
+check = () => {
+  if(playerOrder[playerOrder.length-1] !== order[playerOrder.length-1])
+  good = false;
+
+  if(playerOrder.length == 20 && good){
+    winGame();
+  }
+
+  if(good == false){
+    flashColor();
+    turnCounter.innerHTML = "NO!";
+    setTimeout(() => {
+      turnCounter.innerHTML = turn
+    });
+  }
 }
