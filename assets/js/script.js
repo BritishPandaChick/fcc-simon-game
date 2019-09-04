@@ -1,6 +1,3 @@
-//https://www.youtube.com/watch?v=n_ec3eowFLQ
-//Stop at 54:35
-
 //Global variables
 let order = [];
 let playerOrder = [];
@@ -143,6 +140,14 @@ clearColor = () => {
   bottomRight.style.backgroundColor = "darkblue";
 }
 
+//flash colors
+flashColor = () => {
+  topLeft.style.backgroundColor = "lightgreen";
+  topRight.style.backgroundColor = "tomato";
+  bottomLeft.style.backgroundColor = "yellow";
+  bottomRight.style.backgroundColor = "lightskyblue";
+}
+
 //addEventListeners for color buttons
 topLeft.addEventListener("click", (event)  => {
   if(on){
@@ -209,7 +214,36 @@ check = () => {
     flashColor();
     turnCounter.innerHTML = "NO!";
     setTimeout(() => {
-      turnCounter.innerHTML = turn
-    });
+      turnCounter.innerHTML = turn;
+      clearColor();
+
+      if(strict){
+        play();
+      } else {
+        compTurn = true;
+        flash = 0;
+        playerOrder = [];
+        good = true;
+        intervalId = setInterval(gameTurn, 800);
+      }
+    }, 800);
+    noise = false;
   }
+
+  if(turn == playerOrder.length && good && !win){
+    turn++;
+    playerOrder = [];
+    compTurn = true;
+    flash = 0;
+    turnCounter.innerHTML = turn;
+    intervalId = setInterval(gameTurn, 800);
+  }
+}
+
+//Win game
+winGame = () => {
+  flashColor();
+  turnCounter.innerHTML = "WIN!";
+  on = false;
+  win = true;
 }

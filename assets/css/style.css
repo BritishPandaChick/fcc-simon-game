@@ -23,16 +23,18 @@ header h1 {
 
 .count {
   position: absolute;
-  margin-left: 83px;
-  margin-top: 197px;
+  margin-left: 87px;
+  margin-top: 205px;
   text-transform: uppercase;
+  font-family: "Arial", sans-serif;
 }
 
 .button-text {
   position: absolute;
-  margin-left: 19px;
+  margin-left: 29px;
   margin-top: 142px;
   text-transform: uppercase;
+  font-family: "Arial", sans-serif;
 }
 
 .button-text span:last-child  {
@@ -42,8 +44,10 @@ header h1 {
 #game-title {
   position: absolute;
   font-size: 40px;
-  margin-left: 35px;
+  margin-left: 45px;
   margin-top: 40px;
+  text-transform: uppercase;
+  font-family: "Arial", sans-serif;
 }
 
 #turn-window {
